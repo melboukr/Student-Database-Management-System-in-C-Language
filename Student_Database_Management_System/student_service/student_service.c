@@ -21,6 +21,18 @@ void displayAllStudentsService() {
     displayLinkedList(studentsList);
 }
 
+int integrityCheck(int rollNumber) {
+    Node* current = studentsList->head;
+
+    while (current != NULL) {
+        if (current->student.rollNumber == rollNumber) {
+            return 1; // Student with the given roll number found
+        }
+        current = current->next;
+    }
+
+    return 0; // Student with the given roll number not found
+}
 
 void addStudentService() {
     Student newStudent;
@@ -28,8 +40,14 @@ void addStudentService() {
     scanf(" %[^\n]", newStudent.name);
 
     int rollNumber;
+    do {
         printf("Enter Roll Number: ");
         scanf("%d", &rollNumber);
+
+        if (integrityCheck(rollNumber)) {
+            printf("A student with the same Roll Number already exists. Please try again.\n");
+        }
+    } while (integrityCheck(rollNumber));
 
     newStudent.rollNumber = rollNumber;
 
