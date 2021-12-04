@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1638403280 source:d:\projects\student-database-management-system-in-c-language\student_database_management_system\main.c
+	<stdio.h>
+	"student_service/student_service.h"
+
+1690546643 d:\projects\student-database-management-system-in-c-language\student_database_management_system\student_service\student_service.h
+	"../utils/linked_list.h"
+	"../utils/file_handler.h"
+
+1690503496 d:\projects\student-database-management-system-in-c-language\student_database_management_system\utils\linked_list.h
+	"../entities/student.h"
+
+1690503497 d:\projects\student-database-management-system-in-c-language\student_database_management_system\entities\student.h
+
+1690503303 d:\projects\student-database-management-system-in-c-language\student_database_management_system\utils\file_handler.h
+	"linked_list.h"
+
+1690546643 source:d:\projects\student-database-management-system-in-c-language\student_database_management_system\utils\file_handler.c
+	<stdio.h>
+	"file_handler.h"
+
+1690546643 source:d:\projects\student-database-management-system-in-c-language\student_database_management_system\utils\linked_list.c
+	<stdio.h>
+	<stdlib.h>
+	"linked_list.h"
+
+1638404174 source:d:\projects\student-database-management-system-in-c-language\student_database_management_system\student_service\student_service.c
+	<stdio.h>
+	"student_service.h"
+
