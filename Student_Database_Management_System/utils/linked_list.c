@@ -4,24 +4,26 @@
 
 LinkedList* createLinkedList() {
     LinkedList* list = (LinkedList*)malloc(sizeof(LinkedList));
-     if (list == NULL) {
-        printf("Memory allocation failed. Exiting...\n");
-        exit(1); // Exit the program with an error code
+    if (list == NULL) {
+        printf("Error: Memory allocation failed for LinkedList. Exiting...\n");
+        return NULL;
     }
     list->head = NULL;
     return list;
 }
 
-void insertNode(LinkedList* list, const Student* student) {
+int insertNode(LinkedList* list, const Student* student) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
-        printf("Memory allocation failed. Exiting...\n");
-        exit(1); // Exit the program with an error code
+        printf("Error: Memory allocation failed for Node. Exiting...\n");
+        return 0;
     }
     newNode->student = *student;
     newNode->next = list->head;
     list->head = newNode;
+    return 1; // Success
 }
+
 
 void deleteNode(LinkedList* list, int rollNumber) {
     Node* current = list->head;

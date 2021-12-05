@@ -28,3 +28,32 @@
 	<stdio.h>
 	"student_service.h"
 
+1638399680 source:d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\main.c
+	<stdio.h>
+	"student_service/student_service.h"
+
+1690543043 d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\student_service\student_service.h
+	"../utils/linked_list.h"
+	"../utils/file_handler.h"
+
+1712413083 d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\utils\linked_list.h
+	"../entities/student.h"
+
+1690499897 d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\entities\student.h
+
+1712413116 d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\utils\file_handler.h
+	"linked_list.h"
+
+1690543043 source:d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\utils\file_handler.c
+	<stdio.h>
+	"file_handler.h"
+
+1712412958 source:d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\utils\linked_list.c
+	<stdio.h>
+	<stdlib.h>
+	"linked_list.h"
+
+1712412528 source:d:\projects\done\student-database-management-system-in-c-language\student_database_management_system\student_service\student_service.c
+	<stdio.h>
+	"student_service.h"
+

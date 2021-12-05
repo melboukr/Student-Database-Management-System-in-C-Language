@@ -13,7 +13,7 @@ typedef struct {
 } LinkedList;
 
 LinkedList* createLinkedList();
-void insertNode(LinkedList* list, const Student* student);
+int insertNode(LinkedList* list, const Student* student);
 void deleteNode(LinkedList* list, int rollNumber);
 Node* findNode(LinkedList* list, int rollNumber);
 void displayLinkedList(LinkedList* list);
