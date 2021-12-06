@@ -56,10 +56,14 @@ void addStudentService() {
     printf("Enter Grade: ");
     scanf("%f", &newStudent.grade);
 
-    insertNode(studentsList, &newStudent);
+    if (!insertNode(studentsList, &newStudent)) {
+        printf("Error: Failed to add student. Memory allocation failed.\n");
+        return;
+    }
     updateDataService();
     printf("Student added successfully.\n");
 }
+
 
 void searchStudentService() {
     int rollNumber;

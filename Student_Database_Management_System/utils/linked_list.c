@@ -69,6 +69,10 @@ void displayLinkedList(LinkedList* list) {
 }
 
 void destroyLinkedList(LinkedList* list) {
+    if (list == NULL) {
+        return;
+    }
+
     Node* current = list->head;
     while (current != NULL) {
         Node* next = current->next;
@@ -76,4 +80,6 @@ void destroyLinkedList(LinkedList* list) {
         current = next;
     }
     free(list);
+    printf("Linked list memory freed successfully.\n");
 }
+
