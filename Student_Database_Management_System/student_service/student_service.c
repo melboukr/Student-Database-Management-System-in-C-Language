@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "student_service.h"
+#include <stdbool.h>
 
 static LinkedList* studentsList = NULL;
 const char* studentDataFile = "data/studentDataFile.txt";
@@ -34,6 +35,14 @@ int integrityCheck(int rollNumber) {
     return 0; // Student with the given roll number not found
 }
 
+bool isValidAge(int age) {
+    return (age >= 0 && age <= 120); // Assuming age is between 0 and 120
+}
+
+bool isValidGrade(float grade) {
+    return (grade >= 0 && grade <= 100); // Assuming grade is between 0 and 100
+}
+
 void addStudentService() {
     Student newStudent;
     printf("Enter Student Name: ");
@@ -51,10 +60,29 @@ void addStudentService() {
 
     newStudent.rollNumber = rollNumber;
 
-    printf("Enter Age: ");
-    scanf("%d", &newStudent.age);
-    printf("Enter Grade: ");
-    scanf("%f", &newStudent.grade);
+    int age;
+    do {
+        printf("Enter Age: ");
+        scanf("%d", &age);
+
+        if (!isValidAge(age)) {
+            printf("Error: Invalid age. Please enter a valid age between 0 and 120.\n");
+        }
+    } while (!isValidAge(age));
+
+    newStudent.age = age;
+
+    float grade;
+    do {
+        printf("Enter Grade: ");
+        scanf("%f", &grade);
+
+        if (!isValidGrade(grade)) {
+            printf("Error: Invalid grade. Please enter a valid grade between 0 and 100.\n");
+        }
+    } while (!isValidGrade(grade));
+
+    newStudent.grade = grade;
 
     if (!insertNode(studentsList, &newStudent)) {
         printf("Error: Failed to add student. Memory allocation failed.\n");
@@ -63,7 +91,6 @@ void addStudentService() {
     updateDataService();
     printf("Student added successfully.\n");
 }
-
 
 void searchStudentService() {
     int rollNumber;
