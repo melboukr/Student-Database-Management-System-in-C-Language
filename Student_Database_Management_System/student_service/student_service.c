@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "student_service.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 static LinkedList* studentsList = NULL;
 const char* studentDataFile = "data/studentDataFile.txt";
@@ -35,12 +38,27 @@ int integrityCheck(int rollNumber) {
     return 0; // Student with the given roll number not found
 }
 
+
 bool isValidAge(int age) {
-    return (age >= 0 && age <= 120); // Assuming age is between 0 and 120
+    return (age >= 0 && age <= 120);
 }
 
 bool isValidGrade(float grade) {
-    return (grade >= 0 && grade <= 100); // Assuming grade is between 0 and 100
+    return (grade >= 0 && grade <= 100);
+}
+
+bool isNumericInput(const char* input) {
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (!isdigit(input[i]) && input[i] != '.' && input[i] != '-') {
+            return false;
+        }
+    }
+    return true;
+}
+
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void addStudentService() {
@@ -49,22 +67,34 @@ void addStudentService() {
     scanf(" %[^\n]", newStudent.name);
 
     int rollNumber;
+    char input[50];
+    bool validRollNumber = false; // Flag to control loop
     do {
         printf("Enter Roll Number: ");
-        scanf("%d", &rollNumber);
-
+        scanf("%s", input);
+        if (!isNumericInput(input)) {
+            printf("Error: Invalid input. Please enter a valid roll number.\n");
+            continue;
+        }
+        rollNumber = atoi(input);
         if (integrityCheck(rollNumber)) {
             printf("A student with the same Roll Number already exists. Please try again.\n");
+        } else {
+            validRollNumber = true; // Set flag to true to exit loop
         }
-    } while (integrityCheck(rollNumber));
+    } while (!validRollNumber);
 
     newStudent.rollNumber = rollNumber;
 
     int age;
     do {
         printf("Enter Age: ");
-        scanf("%d", &age);
-
+        scanf("%s", input);
+        if (!isNumericInput(input)) {
+            printf("Error: Invalid input. Please enter a valid age.\n");
+            continue;
+        }
+        age = atoi(input);
         if (!isValidAge(age)) {
             printf("Error: Invalid age. Please enter a valid age between 0 and 120.\n");
         }
@@ -75,8 +105,12 @@ void addStudentService() {
     float grade;
     do {
         printf("Enter Grade: ");
-        scanf("%f", &grade);
-
+        scanf("%s", input);
+        if (!isNumericInput(input)) {
+            printf("Error: Invalid input. Please enter a valid grade.\n");
+            continue;
+        }
+        grade = atof(input);
         if (!isValidGrade(grade)) {
             printf("Error: Invalid grade. Please enter a valid grade between 0 and 100.\n");
         }
@@ -91,6 +125,7 @@ void addStudentService() {
     updateDataService();
     printf("Student added successfully.\n");
 }
+
 
 void searchStudentService() {
     int rollNumber;
