@@ -68,7 +68,7 @@ void addStudentService() {
 
     int rollNumber;
     char input[50];
-    bool validRollNumber = false; // Flag to control loop
+    bool validRollNumber = false;
     do {
         printf("Enter Roll Number: ");
         scanf("%s", input);
@@ -80,7 +80,7 @@ void addStudentService() {
         if (integrityCheck(rollNumber)) {
             printf("A student with the same Roll Number already exists. Please try again.\n");
         } else {
-            validRollNumber = true; // Set flag to true to exit loop
+            validRollNumber = true;
         }
     } while (!validRollNumber);
 
@@ -103,6 +103,7 @@ void addStudentService() {
     newStudent.age = age;
 
     float grade;
+    bool validGrade = false; // Flag to control the loop
     do {
         printf("Enter Grade: ");
         scanf("%s", input);
@@ -113,8 +114,10 @@ void addStudentService() {
         grade = atof(input);
         if (!isValidGrade(grade)) {
             printf("Error: Invalid grade. Please enter a valid grade between 0 and 100.\n");
+        } else {
+            validGrade = true; // Set flag to true to exit loop
         }
-    } while (!isValidGrade(grade));
+    } while (!validGrade);
 
     newStudent.grade = grade;
 
