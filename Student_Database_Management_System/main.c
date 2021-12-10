@@ -16,6 +16,9 @@ int main() {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
+        // Clear the input buffer
+        clearInputBuffer();
+
         switch (choice) {
             case 1:
                 addStudentService();
