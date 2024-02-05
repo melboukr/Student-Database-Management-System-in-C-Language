@@ -21,3 +21,6 @@ The Student Database Management System is a console-based application that allow
 - Handling file I/O operations to save and load data.
 - Implementing functions for data manipulation, search, and update.
 - Basic error handling to deal with edge cases, like invalid input or empty records.
+=======
+# meeedbkr-Student-Database-Management-System-in-C-Language
+C language console-based "Student Database Management System" project utilizing structures and pointers for efficient data management - add, display, search, update, and delete student records. Implements file saving for future use. Demonstrates fundamental C programming skills.
